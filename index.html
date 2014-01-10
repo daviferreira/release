@@ -5,18 +5,9 @@
 </head>
 <body>
     <div id="div" style="width: 20px;height:20px;background-color:red;margin: 200px auto;"></div>
+    <script src="dist/js/release.js"></script>
     <script>
-        var timer,
-            div = document.querySelector('#div');
-        document.documentElement.addEventListener('mousedown', function () {
-            timer = setInterval(function () {
-                div.style.width = (parseInt(div.style.width.replace(/[^-\d\.]/g, ''), 10) + 1) + 'px';
-                div.style.height = (parseInt(div.style.height.replace(/[^-\d\.]/g, ''), 10) + 1) + 'px';
-            }, 100);
-        });
-        document.documentElement.addEventListener('mouseup', function () {
-            clearInterval(timer);
-        });
+        var release = new Release('#div', {releaseTime: 5000, animationTime: 300});
     </script>
 </body>
 </html>
