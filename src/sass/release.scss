@@ -1,0 +1,15 @@
+@import "compass/css3";
+
+$bgcolor: #df0d32;
+
+.release-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: $bgcolor;
+    background-color: rgba($bgcolor, .8);
+    @include border-radius(50%);
+    @include transition(all .3s linear);
+}

@@ -2,12 +2,13 @@
 <html>
 <head>
     <title>Release</title>
+    <style>html, body { width: 100%; height: 100%; }</style>
+    <link rel="stylesheet" href="dist/css/release.css">
 </head>
 <body>
-    <div id="div" style="width: 20px;height:20px;background-color:red;margin: 200px auto;"></div>
     <script src="dist/js/release.js"></script>
     <script>
-        var release = new Release('#div', {releaseTime: 5000, animationTime: 300});
+        var release = new Release('body');
     </script>
 </body>
 </html>
