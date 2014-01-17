@@ -30,15 +30,14 @@ if (typeof module === 'object') {
         defaults: {
             animationTime: 300,
             increaseRate: 15,
-            onRelease: function () {
-                console.log('released!');
-            },
+            onRelease: '',
             releaseTime: 3000
         },
 
         init: function init(elements, options) {
             this.options = extend(options, this.defaults);
-            this.locked = false;
+            this.isLocked = false;
+            this.seconds = 0;
             if (typeof elements === 'string') {
                 this.elements = document.querySelectorAll(elements);
             } else {
@@ -57,23 +56,26 @@ if (typeof module === 'object') {
         // TODO: break method
         bindRelease: function bindRelease(index) {
             var timer,
-                seconds = 0,
                 self = this,
                 resetTimer = function resetTimer() {
                     clearInterval(timer);
-                    seconds = 0;
+                    self.seconds = 0;
                 };
 
             this.elements[index].addEventListener('mousedown', function(e) {
-                if (self.locked) {
+                if (self.isLocked) {
                     return;
                 }
                 timer = setInterval(function () {
-                    seconds += self.options.animationTime;
-                    if (seconds >= self.options.releaseTime) {
+                    self.seconds += self.options.animationTime;
+                    if (self.seconds >= self.options.releaseTime) {
                         resetTimer();
-                        self.locked = true;
-                        self.options.onRelease();
+                        self.isLocked = true;
+                        if (typeof self.options.onRelease === 'function') {
+                            self.options.onRelease();
+                        } else {
+                            self.release();
+                        }
                     } else {
                         if (self.indicator === undefined) {
                             self.indicator = new ReleaseIndicator(self.options.increaseRate);
@@ -85,12 +87,18 @@ if (typeof module === 'object') {
             });
 
             this.elements[index].addEventListener('mouseup', function() {
-                if (self.locked) {
+                if (self.isLocked) {
                     return;
                 }
                 resetTimer();
                 self.indicator.reset();
             });
+        },
+
+        release: function release() {
+            this.isLocked = false;
+            this.seconds = 0;
+            this.indicator.reset();
         }
     };
 
