@@ -70,7 +70,7 @@ if (typeof module === 'object') {
                     self.seconds += self.options.animationTime;
                     if (self.seconds >= self.options.releaseTime) {
                         resetTimer();
-                        self.isLocked = true;
+                        self.lock();
                         if (typeof self.options.onRelease === 'function') {
                             self.options.onRelease();
                         } else {
@@ -97,9 +97,17 @@ if (typeof module === 'object') {
         },
 
         release: function release() {
-            this.isLocked = false;
+            this.unlock();
             this.seconds = 0;
             this.indicator.reset();
+        },
+
+        lock: function lock() {
+            this.isLocked = true;
+        },
+
+        unlock: function unlock() {
+            this.isLocked = false;
         }
     };
 
