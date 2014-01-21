@@ -36,15 +36,16 @@ describe('Indicator TestCase', function () {
         it('should accept an array of HTML nodes', function () {
             var div = document.body.appendChild(document.createElement('div'));
             this.release = new Release([div]);
-            expect(this.release.elements).toEqual([div]);
+            expect(this.release.elements[0]).toBe(div);
             document.body.removeChild(div);
         });
 
         it('should accept a selector', function () {
-            var div = document.body.appendChild(document.createElement('div'));
+            var div = document.createElement('div');
             div.className = 'release';
+            document.body.appendChild(div);
             this.release = new Release('.release');
-            expect(this.release.elements).toEqual([div]);
+            expect(this.release.elements[0]).toBe(div);
             document.body.removeChild(div);
         });
     });
