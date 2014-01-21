@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             src: 'src/js/**/*.js',
             options: {
                 specs: 'spec/*.spec.js',
-                helpers: 'spec/helpers/*.js',
+                //helpers: 'spec/helpers/*.js',
                 styles: 'dist/css/*.css',
                 junit: {
                     path: "reports/jasmine/",

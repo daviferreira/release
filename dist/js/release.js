@@ -1,10 +1,6 @@
-function ReleaseIndicator(increaseRate) {
+function ReleaseIndicator(increaseRate, animationTime) {
     'use strict';
-    return this.init(increaseRate);
-}
-
-if (typeof module === 'object') {
-    module.exports = ReleaseIndicator;
+    return this.init(increaseRate, animationTime);
 }
 
 (function (window, document) {
@@ -23,16 +19,18 @@ if (typeof module === 'object') {
 
         animate: function animate(e) {
             var height,
-                width;
+                width,
+                self;
             height = (this.element.offsetHeight + this.increaseRate);
             width = (this.element.offsetWidth + this.increaseRate);
             this.element.style.top = e.pageY + 'px';
             this.element.style.left = e.pageX + 'px';
             if (!this.isActive) {
+                self = this;
                 this.isActive = true;
                 setTimeout(function () {
-                    this.element.classList.add('release-indicator-active');
-                }.bind(this), this.animationTime);
+                    self.element.classList.add('release-indicator-active');
+                }, this.animationTime);
             } else {
                 this.element.style.width = width + 'px';
                 this.element.style.height = height + 'px';
