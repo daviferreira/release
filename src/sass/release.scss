@@ -11,5 +11,8 @@ $bgcolor: #df0d32;
     background-color: $bgcolor;
     background-color: rgba($bgcolor, .8);
     @include border-radius(50%);
-    @include transition(all .3s linear);
+}
+
+.release-indicator-active {
+    @include transition(all .2s linear);
 }

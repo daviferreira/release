@@ -28,7 +28,7 @@ if (typeof module === 'object') {
     Release.prototype = {
 
         defaults: {
-            animationTime: 300,
+            animationTime: 200,
             increaseRate: 15,
             onRelease: '',
             releaseTime: 3000
@@ -78,7 +78,8 @@ if (typeof module === 'object') {
                         }
                     } else {
                         if (self.indicator === undefined) {
-                            self.indicator = new ReleaseIndicator(self.options.increaseRate);
+                            self.indicator = new ReleaseIndicator(self.options.increaseRate,
+                                                                  self.options.animationTime);
                         } else {
                             self.indicator.animate(e);
                         }

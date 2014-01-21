@@ -12,10 +12,12 @@ if (typeof module === 'object') {
 
     ReleaseIndicator.prototype = {
 
-        init: function init(increaseRate) {
+        init: function init(increaseRate, animationTime) {
             this.increaseRate = increaseRate;
+            this.animationTime = animationTime;
             this.element = document.createElement('div');
             this.element.className = 'release-indicator';
+            this.isActive = false;
             document.body.appendChild(this.element);
         },
 
@@ -24,17 +26,30 @@ if (typeof module === 'object') {
                 width;
             height = (this.element.offsetHeight + this.increaseRate);
             width = (this.element.offsetWidth + this.increaseRate);
-            this.element.style.width = width + 'px';
-            this.element.style.height = height + 'px';
             this.element.style.top = e.pageY + 'px';
             this.element.style.left = e.pageX + 'px';
-            this.element.style.marginTop = (-(height / 2)) + 'px';
-            this.element.style.marginLeft = (-(width / 2)) + 'px';
+            if (!this.isActive) {
+                this.isActive = true;
+                setTimeout(function () {
+                    this.element.classList.add('release-indicator-active');
+                }.bind(this), this.animationTime);
+            } else {
+                this.element.style.width = width + 'px';
+                this.element.style.height = height + 'px';
+                this.element.style.marginTop = (-(height / 2)) + 'px';
+                this.element.style.marginLeft = (-(width / 2)) + 'px';
+            }
         },
 
         reset: function reset() {
             this.element.style.width = '0';
             this.element.style.height = '0';
+            this.element.style.marginTop = '';
+            this.element.style.marginLeft = '';
+            this.element.style.top = '';
+            this.element.style.left = '';
+            this.isActive = false;
+            this.element.classList.remove('release-indicator-active');
         }
 
     };
@@ -69,7 +84,7 @@ if (typeof module === 'object') {
     Release.prototype = {
 
         defaults: {
-            animationTime: 300,
+            animationTime: 200,
             increaseRate: 15,
             onRelease: '',
             releaseTime: 3000
@@ -119,7 +134,8 @@ if (typeof module === 'object') {
                         }
                     } else {
                         if (self.indicator === undefined) {
-                            self.indicator = new ReleaseIndicator(self.options.increaseRate);
+                            self.indicator = new ReleaseIndicator(self.options.increaseRate,
+                                                                  self.options.animationTime);
                         } else {
                             self.indicator.animate(e);
                         }
