@@ -99,7 +99,7 @@ module.exports = function(grunt) {
     gruntConfig.plato = {
         feed: {
             files: {
-                'reports/plato': ['src/js/release.js']
+                'reports/plato': ['src/js/**/*.js']
             }
         }
     };
