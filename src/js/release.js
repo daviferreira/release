@@ -5,10 +5,6 @@ function Release(elements, options) {
     return this.init(elements, options);
 }
 
-if (typeof module === 'object') {
-    module.exports = Release;
-}
-
 (function (window, document) {
     'use strict';
 
@@ -55,10 +51,9 @@ if (typeof module === 'object') {
 
         // TODO: break method
         bindRelease: function bindRelease(index) {
-            var timer,
-                self = this,
+            var self = this,
                 resetTimer = function resetTimer() {
-                    clearInterval(timer);
+                    clearInterval(self.timer);
                     self.seconds = 0;
                 };
 
@@ -66,7 +61,7 @@ if (typeof module === 'object') {
                 if (self.isLocked) {
                     return;
                 }
-                timer = setInterval(function () {
+                self.timer = setInterval(function () {
                     self.seconds += self.options.animationTime;
                     if (self.seconds >= self.options.releaseTime) {
                         resetTimer();

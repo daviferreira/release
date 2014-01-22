@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     };
 
     gruntConfig.jslint = {
-        files: ['src/js/**/*.js', 'spec/*.js', 'Gruntfile.js'],
+        files: ['src/js/**/*.js', 'spec/**/*.js', 'Gruntfile.js'],
         directives: {
             browser: true,
             unparam: true,
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             src: 'src/js/**/*.js',
             options: {
                 specs: 'spec/*.spec.js',
-                //helpers: 'spec/helpers/*.js',
+                helpers: 'spec/helpers/*.js',
                 styles: 'dist/css/*.css',
                 junit: {
                     path: "reports/jasmine/",
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 
     gruntConfig.watch = {
         scripts: {
-            files: ['src/js/**/*.js', 'spec/*.js', 'Gruntfile.js'],
+            files: ['src/js/**/*.js', 'spec/**/*.js', 'Gruntfile.js'],
             tasks: ['js'],
             options: {
                 debounceDelay: 250

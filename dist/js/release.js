@@ -40,13 +40,16 @@ function ReleaseIndicator(increaseRate, animationTime) {
         },
 
         reset: function reset() {
+            this.isActive = false;
+            if (this.element === undefined) {
+                return;
+            }
             this.element.style.width = '0';
             this.element.style.height = '0';
             this.element.style.marginTop = '';
             this.element.style.marginLeft = '';
             this.element.style.top = '';
             this.element.style.left = '';
-            this.isActive = false;
             this.element.classList.remove('release-indicator-active');
         }
 
@@ -57,10 +60,6 @@ function ReleaseIndicator(increaseRate, animationTime) {
 function Release(elements, options) {
     'use strict';
     return this.init(elements, options);
-}
-
-if (typeof module === 'object') {
-    module.exports = Release;
 }
 
 (function (window, document) {
@@ -109,10 +108,9 @@ if (typeof module === 'object') {
 
         // TODO: break method
         bindRelease: function bindRelease(index) {
-            var timer,
-                self = this,
+            var self = this,
                 resetTimer = function resetTimer() {
-                    clearInterval(timer);
+                    clearInterval(self.timer);
                     self.seconds = 0;
                 };
 
@@ -120,7 +118,7 @@ if (typeof module === 'object') {
                 if (self.isLocked) {
                     return;
                 }
-                timer = setInterval(function () {
+                self.timer = setInterval(function () {
                     self.seconds += self.options.animationTime;
                     if (self.seconds >= self.options.releaseTime) {
                         resetTimer();

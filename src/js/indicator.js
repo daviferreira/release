@@ -42,13 +42,16 @@ function ReleaseIndicator(increaseRate, animationTime) {
         },
 
         reset: function reset() {
+            this.isActive = false;
+            if (this.element === undefined) {
+                return;
+            }
             this.element.style.width = '0';
             this.element.style.height = '0';
             this.element.style.marginTop = '';
             this.element.style.marginLeft = '';
             this.element.style.top = '';
             this.element.style.left = '';
-            this.isActive = false;
             this.element.classList.remove('release-indicator-active');
         }
 
