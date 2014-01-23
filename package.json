@@ -1,6 +1,6 @@
 {
   "name": "release",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Release events for interfaces.",
   "main": "src/js/release.js",
   "repository": {

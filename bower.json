@@ -1,0 +1,31 @@
+{
+  "name": "release",
+  "version": "0.1.0",
+  "homepage": "https://github.com/daviferreira/release/",
+  "authors": [
+    "Davi Ferreira <hi@daviferreira.com>"
+  ],
+  "description": "Release is a JavaScript plugin that enables the execution of an action after the user keeps the mouse pressed for a custom amount of time.",
+  "main": ["dist/js/release.js", "dist/js/release.min.js", "dist/css/release.css"],
+  "keywords": [
+    "release",
+    "interaction",
+    "mousedown"
+  ],
+  "license": "THE BEER-WARE LICENSE",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "coverage",
+    "reports",
+    "_SpecRunner.html",
+    "Gruntfile.js",
+    "demo",
+    "package.json",
+    "src",
+    "README.md",
+    "CHANGES.md"
+  ]
+}
