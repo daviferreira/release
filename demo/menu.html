@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Release</title>
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="../dist/css/release.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css">
+</head>
+<body>
+
+
+
+<div class="container csstransforms">
+            <!-- Top Navigation -->
+
+
+            <div class="component">
+
+                <!-- Start Nav Structure -->
+                <button class="cn-button" id="cn-button">Close</button>
+                <div class="cn-wrapper" id="cn-wrapper">
+                    <ul>
+                        <li><a href="#"><span>About</span></a></li>
+
+                        <li><a href="#"><span>Articles</span></a></li>
+
+                        <li><a href="#"><span>Plugins</span></a></li>
+
+                        <li><a href="#"><span>Follow</span></a></li>
+                     </ul>
+                </div>
+                <!-- End of Nav Structure -->
+            </div>
+
+        </div><!-- /container -->
+
+
+    <script src="../dist/js/release.js"></script>
+    <script>
+        var wrapper = document.getElementById('cn-wrapper'),
+            button = document.getElementById('cn-button'),
+            showMenu = function () {
+                button.style.top = wrapper.style.top = release.indicator.element.style.top;
+                button.style.left = wrapper.style.left = release.indicator.element.style.left;
+                wrapper.classList.add('opened-nav');
+                button.classList.add('opened-button')
+            },
+            release = new Release('body', {
+                increaseRate: 30,
+                onRelease: showMenu,
+                releaseTime: 1500
+            });
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            wrapper.classList.remove('opened-nav');
+            button.classList.remove('opened-button')
+            setTimeout(function () {
+                release.release();
+            }, 350);
+        });
+    </script>
+
+</body>
+</html>

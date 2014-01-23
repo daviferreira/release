@@ -87,7 +87,9 @@ function Release(elements, options) {
                     return;
                 }
                 resetTimer();
-                self.indicator.reset();
+                if (self.indicator) {
+                    self.indicator.reset();
+                }
             });
         },
 
