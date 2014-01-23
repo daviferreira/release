@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Release</title>
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="../dist/css/release.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css">
+    <style>
+    .release-indicator {
+        background: red;
+        opacity: .5;
+        box-shadow: 0 0 5px red;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="info" style="padding-top: 40px;">Keep the mouse pressed over any product to delete it</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product</th>
+                </tr>
+            </thead>
+            <tbody id="products">
+                <tr class="product">
+                    <td>1</td>
+                    <td>Macbook Pro</td>
+                </tr>
+                <tr class="product">
+                    <td>2</td>
+                    <td>Macbook Air</td>
+                </tr>
+                <tr class="product">
+                    <td>3</td>
+                    <td>iPhone 4</td>
+                </tr>
+                <tr class="product">
+                    <td>4</td>
+                    <td>iPhone 4s</td>
+                </tr>
+                <tr class="product">
+                    <td>5</td>
+                    <td>iPhone 5</td>
+                </tr>
+                <tr class="product">
+                    <td>6</td>
+                    <td>iPhone 5s</td>
+                </tr>
+                <tr class="product">
+                    <td>7</td>
+                    <td>iMac</td>
+                </tr>
+                <tr class="product">
+                    <td>8</td>
+                    <td>iPad</td>
+                </tr>
+                <tr class="product">
+                    <td>9</td>
+                    <td>iPad Mini</td>
+                </tr>
+                <tr class="product">
+                    <td>10</td>
+                    <td>iPod</td>
+                </tr>
+                <tr class="product">
+                    <td>11</td>
+                    <td>iPod Shuffle</td>
+                </tr>
+                <tr class="product">
+                    <td>12</td>
+                    <td>Cinema Display</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../dist/js/release.js"></script>
+    <script>
+        var products = document.getElementById('products'),
+            release = new Release('.product', {
+                increaseRate: 30,
+                releaseTime: 1500,
+                onRelease: function (el) {
+                    el.classList.add('deleting');
+                    setTimeout(function () {
+                        products.removeChild(el);
+                    }, 300)
+                    release.release();
+                }
+            });
+    </script>
+
+</body>
+</html>

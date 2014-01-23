@@ -8,7 +8,8 @@ Status](https://travis-ci.org/daviferreira/release.png)](https://travis-ci.org/d
 ## Demos
 
 * __[Menu](http://www.daviferreira.com/release/demo/menu.html)__
-* __[Press to delete](#)__
+* __[Press to delete](http://www.daviferreira.com/release/demo/delete.html)__
+* __[Shopping Cart](#)__
 
 ## Basic usage
 

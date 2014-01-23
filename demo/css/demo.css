@@ -443,3 +443,37 @@ body {
 		line-height: 3em;
 	}
 }
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+table {
+    margin: 20px;
+    width: 100%;
+    box-shadow: 0 0 6px #ccc;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #33333b;
+    color: #fff;
+}
+
+td {
+    background-color: #fff;
+}
+
+.product {
+    -webkit-transition: all .3s linear;
+}
+
+.deleting {
+    opacity: 0;
+}

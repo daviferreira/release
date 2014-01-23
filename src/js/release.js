@@ -67,7 +67,7 @@ function Release(elements, options) {
                         resetTimer();
                         self.lock();
                         if (typeof self.options.onRelease === 'function') {
-                            self.options.onRelease();
+                            self.options.onRelease(self.elements[index]);
                         } else {
                             self.release();
                         }
@@ -82,7 +82,7 @@ function Release(elements, options) {
                 }, self.options.animationTime);
             });
 
-            this.elements[index].addEventListener('mouseup', function() {
+            document.body.addEventListener('mouseup', function() {
                 if (self.isLocked) {
                     return;
                 }
