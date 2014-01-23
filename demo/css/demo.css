@@ -138,6 +138,13 @@ body {
     position: relative
 }
 
+.info {
+    padding-top: 20%;
+    color: #666;
+    font-weight: bold;
+    text-align: center;
+}
+
 
 .component > h2 {
 	position: absolute;
