@@ -462,7 +462,7 @@ th, td {
 }
 
 thead tr {
-    background-color: #33333b;
+    background-color: #6a5a8c;
 }
 
 th {
@@ -481,6 +481,23 @@ tbody tr {
     opacity: 0;
 }
 
-tr:hover {
+tbody tr:hover {
     background-color: #ccc;
+}
+
+.masthead {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    z-index: 102;
+    padding-top: 30px;
+    border-bottom: 1px solid #ebebeb;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.shopping-cart {
+    float: right;
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Release</title>
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="../dist/css/release.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css">
+    <style>
+    ul#produtos{ list-style:none; margin-top: 10px; }
+    ul#produtos li{
+        float: left;
+        background-color:#fff;
+        -moz-box-shadow: 5px 5px 5px #ccc;
+          -webkit-box-shadow: 5px 5px 5px #ccc;
+          box-shadow: 5px 5px 5px #ccc;
+        padding:10px;
+        margin:15px;
+        width:270px;
+        text-align:center;
+    }
+    ul#produtos li h3{
+        margin: 6px 0 6px 0;
+        color: #594A40;
+        background-color:#f2f2f2;
+        padding:6px;
+    }
+    p.preco-de{
+        color:red;
+        text-decoration:line-through;
+        font-size:11px;
+    }
+    p.preco-por{
+        color: #594A40;
+        font-weight:900;
+    }
+    </style>
+</head>
+<body>
+    <div class="masthead">
+        <div class="container">
+            <div class="shopping-cart" id="shopping-cart">
+                No products on your cart.
+            </div>
+            <h1>My Store</h1>
+        </div>
+    </div>
+    <div class="container">
+        <p class="info" style="padding-top: 100px;">Keep the mouse pressed over any product to buy it</p>
+        <ul id="produtos" class="clearfix">
+            <li class="product" data-id="1"><h3>Book 1</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/twa.jpg" width="75" height="90" /></p><p class="preco-de">From: R$31,00</p><p class="preco-por">Price: R$13,00</p></li>
+            <li class="product" data-id="2"><h3>Book 2</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/trevan.jpg" width="75" height="90" /></p><p class="preco-de">From: R$39,00</p><p class="preco-por">Price: R$20,00</p></li>
+            <li class="product" data-id="3"><h3>Book 3</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/rdbcd.jpg" width="75" height="90" /></p><p class="preco-de">From: R$20,00</p><p class="preco-por">Price: R$14,00</p></li>
+            <li class="product" data-id="4"><h3>Book 4</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/fr_eir.jpg" width="75" height="90" /></p><p class="preco-de">From: R$40,00</p><p class="preco-por">Price: R$18,00</p></li>
+            <li class="product" data-id="5"><h3>Book 5</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/bdcora.jpg" width="75" height="90" /></p><p class="preco-de">From: R$20,00</p><p class="preco-por">Price: R$18,00</p></li>
+            <li class="product" data-id="6"><h3>Book 6</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/jvrails.jpg" width="75" height="90" /></p><p class="preco-de">From: R$26,00</p><p class="preco-por">Price: R$10,00</p></li>
+            <li class="product" data-id="7"><h3>Book 7</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/jsaccess.jpg" width="75" height="90" /></p><p class="preco-de">From: R$40,00</p><p class="preco-por">Price: R$11,00</p></li>
+            <li class="product" data-id="8"><h3>Book 8</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/snfocus.jpg" width="75" height="90" /></p><p class="preco-de">From: R$39,00</p><p class="preco-por">Price: R$13,00</p></li>
+            <li class="product" data-id="9"><h3>Book 9</h3><p><img src="http://tableless.github.io/exemplos/carrinho-compras/bmsft.jpg" width="75" height="90" /></p><p class="preco-de">From: R$28,00</p><p class="preco-por">Price: R$19,00</p></li>
+        </ul>
+        <p style="text-align: center; margin: 60px 0;"><a href="https://github.com/daviferreira/release">github.com/daviferreira/release</a></p>
+    </div>
+    <script src="../dist/js/release.js"></script>
+    <script>
+        var products = document.getElementById('products'),
+            release = new Release('.product', {
+                increaseRate: 20,
+                releaseTime: 2000,
+                onRelease: function (el) {
+                    shoppingCart.addProduct(el.getAttribute('data-id'));
+                    release.release();
+                }
+            }),
+            shoppingCart = {
+                products: [],
+                totalProducts: 0,
+                label: document.getElementById('shopping-cart'),
+                addProduct: function (id) {
+                    if (this.products.indexOf(id) === -1) {
+                        this.products.push(id);
+                        this.updateCart();
+                    }
+                },
+                updateCart: function () {
+                    this.label.innerHTML = this.products.length + ' product' + (this.products.length > 1 ? 's' : '');
+                }
+            };
+    </script>
+
+</body>
+</html>
