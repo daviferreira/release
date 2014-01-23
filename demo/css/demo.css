@@ -461,12 +461,15 @@ th, td {
     border: 1px solid #ccc;
 }
 
-th {
+thead tr {
     background-color: #33333b;
+}
+
+th {
     color: #fff;
 }
 
-td {
+tbody tr {
     background-color: #fff;
 }
 
@@ -476,4 +479,8 @@ td {
 
 .deleting {
     opacity: 0;
+}
+
+tr:hover {
+    background-color: #ccc;
 }
