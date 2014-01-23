@@ -28,6 +28,8 @@
                      </ul>
                 </div>
                 <!-- End of Nav Structure -->
+
+                <div id="cn-overlay" class="cn-overlay"></div>
             </div>
 
         </div><!-- /container -->
@@ -40,11 +42,21 @@
     <script>
         var wrapper = document.getElementById('cn-wrapper'),
             button = document.getElementById('cn-button'),
+            overlay = document.getElementById('cn-overlay'),
             showMenu = function () {
                 button.style.top = wrapper.style.top = release.indicator.element.style.top;
                 button.style.left = wrapper.style.left = release.indicator.element.style.left;
                 wrapper.classList.add('opened-nav');
-                button.classList.add('opened-button')
+                button.classList.add('opened-button');
+                overlay.classList.add('on-overlay');
+            },
+            hideMenu = function () {
+                wrapper.classList.remove('opened-nav');
+                button.classList.remove('opened-button');
+                overlay.classList.remove('on-overlay');
+                setTimeout(function () {
+                    release.release();
+                }, 350);
             },
             release = new Release('body', {
                 increaseRate: 30,
@@ -53,11 +65,11 @@
             });
         button.addEventListener('click', function (e) {
             e.preventDefault();
-            wrapper.classList.remove('opened-nav');
-            button.classList.remove('opened-button')
-            setTimeout(function () {
-                release.release();
-            }, 350);
+            hideMenu();
+        });
+        overlay.addEventListener('click', function (e) {
+            e.preventDefault();
+            hideMenu();
         });
     </script>
 
