@@ -7,7 +7,7 @@ Status](https://travis-ci.org/daviferreira/release.png)](https://travis-ci.org/d
 
 ## Demos
 
-* __[Menu](#)__
+* __[Menu](http://www.daviferreira.com/release/demo/menu.html)__
 * __[Press to delete](#)__
 
 ## Basic usage
