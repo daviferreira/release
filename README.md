@@ -7,8 +7,8 @@ Status](https://travis-ci.org/daviferreira/release.png)](https://travis-ci.org/d
 
 ## Demos
 
-* [#](__Menu__)
-* [#](__Press to delete__)
+* __[Menu](#)__
+* __[Press to delete](#)__
 
 ## Basic usage
 
@@ -28,6 +28,20 @@ Now you can instantiate a Release object by using the following code:
 With the above code, all elements with the _release_ class will receive a _mouseup_ event that will execute _myFunction()__ after 3 seconds (default value).
 
 ## Initialization options
+
+        defaults: {
+            animationTime: 200,
+            increaseRate: 15,
+            onRelease: '',
+            releaseTime: 3000
+        },
+
+
+
+* __animationTime__: defines the interval to animate the indicator. It must be the same as the css transition timing value. Default: 200
+* __increaseRate__: pixel value that will be added to the indicator dimensions when the user is pressing the mouse. Default: 15
+* __onRelease__: callback to be executed when _releaseTime_ is reached. Default: none (it will just reset the indicator)
+* __releaseTime__: time limit until the indicator is released. Default: 3000
 
 ## Development
 
