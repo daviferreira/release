@@ -29,14 +29,14 @@ With the above code, all elements with the _release_ class will receive a _mouse
 
 ## Initialization options
 
-        defaults: {
-            animationTime: 200,
-            increaseRate: 15,
-            onRelease: '',
-            releaseTime: 3000
-        },
-
-
+```javascript
+defaults: {
+    animationTime: 200,
+    increaseRate: 15,
+    onRelease: '',
+    releaseTime: 3000
+}
+```
 
 * __animationTime__: defines the interval to animate the indicator. It must be the same as the css transition timing value. Default: 200
 * __increaseRate__: pixel value that will be added to the indicator dimensions when the user is pressing the mouse. Default: 15
