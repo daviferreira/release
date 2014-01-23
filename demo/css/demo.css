@@ -129,15 +129,6 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-* {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: relative
-}
-
 .info {
     padding-top: 20%;
     color: #666;
